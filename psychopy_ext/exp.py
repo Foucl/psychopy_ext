@@ -1192,7 +1192,10 @@ class Task(TrialHandler):
             if hasattr(self, 'respmap'):
                 subj_resp = this_resp[2]
             else:
-                subj_resp = self.computer.valid_responses[this_resp[0]]
+                try:
+                    subj_resp = self.computer.valid_responses[this_resp[0]]
+                except KeyError:
+                    subj_resp=''
             self.this_trial['subj_resp'] = subj_resp
 
             try:
